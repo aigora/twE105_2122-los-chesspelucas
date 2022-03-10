@@ -1,10 +1,13 @@
 # [Los ChessPelucas]
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+[Vamos a hacer un ajedrez. ]
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+[David Marrón Gutiérrez @DavidMG10
+Iban Gómez Sáenz @IbanGomezSaenz
+Noé Feijóo Molina @NoeFeijoo
+Lucas Domínguez González @LucasDG0]
 
 ## Objetivos del trabajo
 
