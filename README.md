@@ -11,4 +11,4 @@ Lucas Domínguez González @LucasDG0]
 
 ## Objetivos del trabajo
 
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
+hacer el mejor ajedrez de la historia que ni el de harry potter
