@@ -11,4 +11,5 @@ Lucas Domínguez González @LucasDG0]
 
 ## Objetivos del trabajo
 
-hacer el mejor ajedrez de la historia que ni el de harry potter
+hacer el mejor ajedrez de la historia 
+
