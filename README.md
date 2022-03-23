@@ -1,4 +1,4 @@
-# [Los ChessPelucas]
+# Los ChessPelucas
 
 [Vamos a hacer un ajedrez. ]
 
