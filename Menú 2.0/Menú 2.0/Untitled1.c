@@ -14,7 +14,7 @@ int main ()
         scanf ("%c", &e_menu);
     }
     while (e_menu != 99 && e_menu != 67 && e_menu != 120 && e_menu != 88 && e_menu != 114 && e_menu !=82);
-    //valores ASCII para c, C, x, X
+    //valores ASCII para c, C, x, X, r, R
 
     if (e_menu == 114 || e_menu ==82 )
     {
