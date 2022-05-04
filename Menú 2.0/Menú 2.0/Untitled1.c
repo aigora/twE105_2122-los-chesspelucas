@@ -10,11 +10,23 @@ int main ()
     char e_menu, eleccion_f;
     do
     {
-        printf ("Si desea jugar pulse: c, si desea salir pulse: x\n");
+        printf ("Si desea jugar pulse: c, si desea salir pulse: x, si desea abrir las reglas pulse: r\n");
         scanf ("%c", &e_menu);
     }
-    while (e_menu != 99 && e_menu != 67 && e_menu != 120 && e_menu != 88);
+    while (e_menu != 99 && e_menu != 67 && e_menu != 120 && e_menu != 88 && e_menu != 114 && e_menu !=82);
     //valores ASCII para c, C, x, X
+
+    if (e_menu == 114 || e_menu ==82 )
+    {
+        FILE *reglas = NULL;
+        reglas=fopen("ficheroajedrez.txt", "r");  
+        char regla[50];
+
+        while (fscanf(reglas, "%[^\n]%c", regla) !=EOF){ 
+                printf("%s\n",regla);
+        }
+        fclose(reglas);
+    }
     if (e_menu != 120 && e_menu != 88)
     {
        eleccion_f = eleccionmenu(e_menu);
@@ -37,7 +49,7 @@ char eleccionmenu(char f)
         {
             case 'c':
             case 'C':
-                printf ("Si quiere que la elección del color de las piezas sea aleatorio pulse: a, en caso contrario pulse: s\n");
+                printf ("Si quiere que la elecciÃ³n del color de las piezas sea aleatorio pulse: a, en caso contrario pulse: s\n");
                 scanf ("%c", &f);
                 switch (f)
                 {
