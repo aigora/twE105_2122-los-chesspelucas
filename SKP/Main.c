@@ -1,31 +1,77 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
+
+#include "Funciones.h"
+
+#define ESCENARIO_FILAS 100
+#define ESCENARIO_COLUMNAS 100
+
+
 
 int main(){
-    int escenario[100][100];
-    int i, j, x = 9, y = 7;
-    for(i = 0; i<100; i++){
-        for(j = 0; j<100; j++)
-            escenario[i][j] = 1;
-    }
-    for(i = 1; i<99; i++){
-        for(j = 1; j<99; j++)
-            escenario[i][j] = 0;
-    }
-    escenario[y][x] = 2;
-    for(i = 0; i<100; i++){
-        for(j = 0; j<100; j++){
-            if(escenario[i][j] == 1){
-                printf("|");
-            }
-            else if(escenario[i][j] == 0){
-                printf(" ");
-            }
-            else if(escenario[i][j] == 2){
-                printf("R");
+
+
+
+    int escenario[ESCENARIO_FILAS][ESCENARIO_COLUMNAS];
+    int x = 50 , y = 5;
+
+
+
+    inicializar_mapa(escenario);
+
+
+
+    posicion(x,y);
+    printf("(o_o)");
+    while(1){
+        Sleep(100); //Ralentiza el bucle
+        //Flecha izquierda
+        if (GetAsyncKeyState(0x25)){
+
+            if(escenario[x-1][y] == 0){
+                posicion(x,y);
+                printf("     ");
+                x--;
+                posicion(x,y);
+                printf("(o_o)");
             }
         }
-    printf("\n");
+        //Flecha derecha
+        if (GetAsyncKeyState(0x27)){
+
+            if(escenario[x+5][y] == 0){
+                posicion(x,y);
+                printf("     ");
+                x++;
+                posicion(x,y);
+                printf("(o_o)");
+            }
+        }
+        //Flecha abajo
+        if (GetAsyncKeyState(0x28)){
+
+            if(escenario[x][y+1] == 0){
+                posicion(x,y);
+                printf("     ");
+                y++;
+                posicion(x,y);
+                printf("(o_o)");
+            }
+        }
+        //Flecha arriba
+        if (GetAsyncKeyState(0x26)){
+
+            if(escenario[x][y-1] == 0){
+                posicion(x,y); printf("     ");
+                y--;
+                posicion(x,y); printf("(o_o)");
+            }
+        }
     }
+
+
+
     return 0;
 }
+
