@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <time.h>
 
 
 
@@ -14,9 +15,9 @@ void posicion(int x , int y);
 void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]);
 int menu(char op);
 int puerta_1(int x, int y);
-int puerta_2(int x, int y);
+int laberinto_p2(int x, int y);
 int puerta_3(int x, int y);
-int puerta_4(int x, int y);
+int buscar_interrogaciones_p4(int x, int y);
 int puerta_5(int x, int y);
 int puerta_6(int x, int y);
 int puerta_7(int x, int y);

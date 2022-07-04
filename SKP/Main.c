@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <time.h>
 
 
 
@@ -40,7 +41,7 @@ int main(){
 
     do{
             printf ("Ahora debes elegir: pulsa J si deseas aceptar la invitación, I para preguntar las condiciones del trato y E para salir corriendo.\n");
-            scanf ("%c", &opcion);
+            scanf (" %c", &opcion);
             i = menu(opcion);
 
 
