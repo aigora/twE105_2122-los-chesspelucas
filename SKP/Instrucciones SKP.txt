@@ -1,0 +1,6 @@
+Con que quieres saber mas...
+
+Te dare un consejo, las pruebas tipo test responde con minusculas, pero el resto escribe siempre en mayusculas para que no haya errores. Ten cuidado! En algunas ya hay cosas escritas, Elon
+tiene muy en cuenta en sus trabajadores que revisen siempre los calculos antes de enviarlos. 
+
+Mucha suerte.
