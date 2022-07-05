@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <time.h>
+#include <string.h>
 
 #include "Funciones.h"
 
@@ -118,14 +119,53 @@ void posicion(int x , int y){
     return 3;
 }
 
-int puerta_1(int x, int y){
-    if (GetAsyncKeyState(0x02)){
+int ahorcado(int x, int y){
+    int xl = 102, yl = 0;
+    int intentos = 0;
+    char letra, a='_', b='_', c='_', d='_', e='_', f='_';
+
             if(x<35 && x>30 && y<18 && y>12){
-                return 1;
+                    do {
+                    posicion (xl, yl);
+                    printf ("%c %c %c %c %c %c\n", a,b,c,d,e,f);
+                    posicion (xl, yl+1);
+                    printf ("Escribe una letra en mayusculas SIN TILDE:");
+                    scanf ("%c", &letra);
+                    printf ("\n");
+                    switch (letra){
+                        case 'V':
+                            a = 'V';
+                        break;
+                        case 'E':
+                            b = 'E';
+                        break;
+                        case 'C':
+                            c = 'C';
+                        break;
+                        case 'T':
+                            d = 'T';
+                        break;
+                        case 'O':
+                            e = 'O';
+                        break;
+                        case 'R':
+                            f = 'R';
+                        break;
+                    }
+
+                    if (a == 'V' && b == 'E' && c == 'C' && d == 'T' && e == 'O' && f == 'R'){
+                        posicion (xl, yl+2);
+                        printf ("Enhorabuena");
+                        return 1;
+                    }
+                    intentos++;
+                }while (intentos != 15);
+                return 2;
             }
-        }
+
     return 3;
 }
+
 
 int laberinto_p2(int x, int y){
     int i, j, ms = 30000, xl = 120, yl = 20;
@@ -229,10 +269,22 @@ int laberinto_p2(int x, int y){
     return 3;
 }
 
-int puerta_3(int x, int y){
-    if (GetAsyncKeyState(0x02)){
-            if(x<18 && x>12 && y<30 && y>25){
+int planetas(int x, int y){
+    int xi=102, y1=5, y2=7;
+    char solucion[]="JUPITER", jugador[50];
+        if(x<18 && x>12 && y<30 && y>25){
+            posicion (xi,y1);
+            printf ("Escribe en mayusculas y sin tildes el 5 planeta del sistema solar:");
+            posicion(xi, y1+1);
+            scanf("%49s", jugador);
+
+            if (strcmp(solucion, jugador)==0){
+                posicion (xi,y2);
+                printf ("Enhorabuena");
                 return 1;
+            }
+            else{
+                return 2;
             }
         }
     return 3;
@@ -308,57 +360,141 @@ int buscar_interrogaciones_p4(int x, int y){
     return 3;
 }
 
-int puerta_5(int x, int y){
-    if (GetAsyncKeyState(0x02)){
-            if(x<88 && x>82 && y<30 && y>25){
+int gravedad(int x, int y){
+    char solucion[]="9.8", jugador[50];
+    int xi=102, yi=0;
+        if(x<88 && x>82 && y<30 && y>25){
+            posicion (xi,yi);
+            printf ("AproximaciÃ³n de la aceleraciÃ³n de la gravedad en m/s. Si tiene decimales separa con '.':");
+            scanf("%49s", jugador);
+
+            if (strcmp(solucion, jugador)==0){
+                posicion (xi,yi++);
+                printf ("Enhorabuena");
                 return 1;
+            }
+            else{
+                return 2;
             }
         }
     return 3;
 }
 
-int puerta_6(int x, int y){
-    if (GetAsyncKeyState(0x02)){
-            if(x<35 && x>30 && y<53 && y>47){
+int satelites(int x, int y){
+    char k;
+    int xi=140, y1=50,y2=51,y3=52,y4=53;
+    if(x<35 && x>30 && y<53 && y>47){
+        posicion (xi,y1);
+        printf ("Cual NO es un satelite de Jupiter: ");
+        scanf("%c",&k);
+        posicion (xi,y2);
+        printf ("a)Adonis");
+        posicion (xi,y3);
+        printf ("b)Europa");
+        posicion (xi,y4);
+        printf ("c)Ganimedes");
+
+        switch(k){
+            case'a':
                 return 1;
-            }
+            case 'b':
+                return 2;
+            case 'c':
+                return 2;
         }
+    }
     return 3;
 }
 
-int puerta_7(int x, int y){
-    if (GetAsyncKeyState(0x02)){
-            if(x<70 && x>60 && y<53 && y>47){
-                return 1;
-            }
+int agua(int x, int y){
+    char solucion[]="AGUA", jugador[50];
+    int xi=102, yj=50;
+    if(x<70 && x>60 && y<53 && y>47){
+        posicion (xi, yj);
+        printf("Elemento necesario para que se de la vida en un planeta:");
+        scanf ("%49s", jugador);
+
+        if (strcmp(jugador, solucion)==0){
+            return 1;
         }
+        else {
+            return 2;
+        }
+    }
+
     return 3;
 }
 
-int puerta_8(int x, int y){
-    if (GetAsyncKeyState(0x02)){
-            if(x<18 && x>12 && y<70 && y>65){
-                return 1;
-            }
+int estrella(int x, int y){
+    int xi=102, yi=25, yj=26;
+    char solucion[]="PROXIMA-CENTAURI", jugador[50];
+    if(x<18 && x>12 && y<70 && y>65){
+        posicion(xi,yi);
+        printf ("Pista:PROXIMA-C_NT__R_\n");
+        posicion (xi, yj);
+        printf("Cual es la 2da estrella mas cercana a la Tierra(CUIDADAO CON EL GUION):");
+        scanf ("%49s", jugador);
+
+        if (strcmp(jugador, solucion)==0){
+            return 1;
         }
+        else {
+            return 2;
+        }
+    }
     return 3;
 }
 
-int puerta_9(int x, int y){
-    if (GetAsyncKeyState(0x02)){
-            if(x<53 && x>47 && y<70 && y>65){
+int velocidad(int x, int y){
+    int xi=102, y1=70, y2=71, y3=72, y4=73;
+    char k;
+    if(x<53 && x>47 && y<70 && y>65){
+        posicion (xi,y1);
+        printf ("Cual es la velocidad de la luz:");
+        scanf("%c",&k);
+        posicion (xi,y2);
+        printf ("a)300 m/s");
+        posicion (xi,y3);
+        printf ("b)3x10^8 km/s");
+        posicion (xi,y4);
+        printf ("c)1.08x10^9 km/h");
+
+        switch(k){
+            case'a':
+                return 2;
+            case 'b':
+                return 2;
+            case 'c':
                 return 1;
-            }
         }
+    }
     return 3;
 }
 
-int puerta_10(int x, int y){
-    if (GetAsyncKeyState(0x02)){
-            if(x<88 && x>82 && y<70 && y>65){
+int composicion(int x, int y){
+    char k;
+    int xi=102, y1=70, y2=71, y3=72, y4=73;
+
+    if(x<88 && x>82 && y<70 && y>65){
+        posicion (xi,y1);
+        printf ("Elemento que compone las estrellas principalmente:");
+        scanf("%c",&k);
+        posicion (xi,y2);
+        printf ("a)Nitrogeno");
+        posicion (xi,y3);
+        printf ("b)Hidrogeno");
+        posicion (xi,y4);
+        printf ("c)Helio");
+
+        switch(k){
+            case'a':
+                return 2;
+            case 'b':
                 return 1;
-            }
+            case 'c':
+                return 2;
         }
+    }
     return 3;
 }
 
@@ -383,7 +519,7 @@ int puerta_11(int x, int y){
                     printf("      ");
                     yl++;
                     posicion(xl,yl);
-                    printf("¿Cual era la contraseña?  ");
+                    printf("ï¿½Cual era la contraseï¿½a?  ");
                     scanf("%i%i%i%i%i", &r1, &r2, &r3, &r4, &r5);
                     if(n1 == r1 && n2 == r2 && n3 == r3 && n4 == r4 && n5 == r5){
                         for(i = 0; i<20; i++){
@@ -419,11 +555,9 @@ int puerta_11(int x, int y){
 }
 
 int puerta_12(int x, int y){
-    if (GetAsyncKeyState(0x02)){
-            if(x<70 && x>60 && y<87 && y>83){
+    if(x<70 && x>60 && y<87 && y>83){
                 return 1;
-            }
-        }
+    }
     return 3;
 }
 
@@ -434,7 +568,7 @@ void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]){
     printf("(o_o)");
 
     while(f != 0){
-        Sleep(100); //Ralentiza el bucle
+        Sleep(200); //Ralentiza el bucle
         //Flecha izquierda
         if (GetAsyncKeyState(0x25)){
 
@@ -479,7 +613,7 @@ void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]){
                 printf("(o_o)");
             }
         }
-        p = puerta_1(x,y);
+        p = ahorcado(x,y);
         if(p == 1){
             posicion(x,y);
             printf("     ");
@@ -511,7 +645,7 @@ void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]){
             posicion(x,y);
             printf("(o_o)");
         }
-        p = puerta_3(x,y);
+        p = planetas(x,y);
         if(p == 1){
             posicion(x,y);
             printf("     ");
@@ -543,7 +677,7 @@ void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]){
             posicion(x,y);
             printf("(o_o)");
         }
-        p = puerta_5(x,y);
+        p = gravedad(x,y);
         if(p == 1){
             posicion(x,y);
             printf("     ");
@@ -559,7 +693,7 @@ void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]){
             posicion(x,y);
             printf("(o_o)");
         }
-        p = puerta_6(x,y);
+        p = satelites(x,y);
         if(p == 1){
             posicion(x,y);
             printf("     ");
@@ -575,11 +709,11 @@ void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]){
             posicion(x,y);
             printf("(o_o)");
         }
-        p = puerta_7(x,y);
+        p = agua(x,y);
         if(p == 1){
             posicion(x,y);
             printf("     ");
-            x += 6;
+            x += 12;
             posicion(x,y);
             printf("(o_o)");
         }
@@ -591,23 +725,7 @@ void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]){
             posicion(x,y);
             printf("(o_o)");
         }
-        p = puerta_8(x,y);
-        if(p == 1){
-            posicion(x,y);
-            printf("     ");
-            y += 6;
-            posicion(x,y);
-            printf("(o_o)");
-        }
-        if(p == 2){
-            posicion(x,y);
-            printf("     ");
-            x = 50;
-            y = 2;
-            posicion(x,y);
-            printf("(o_o)");
-        }
-        p = puerta_9(x,y);
+        p = estrella(x,y);
         if(p == 1){
             posicion(x,y);
             printf("     ");
@@ -623,7 +741,23 @@ void juego(int e[ESCENARIO_FILAS][ESCENARIO_COLUMNAS]){
             posicion(x,y);
             printf("(o_o)");
         }
-        p = puerta_10(x,y);
+        p = velocidad(x,y);
+        if(p == 1){
+            posicion(x,y);
+            printf("     ");
+            y += 6;
+            posicion(x,y);
+            printf("(o_o)");
+        }
+        if(p == 2){
+            posicion(x,y);
+            printf("     ");
+            x = 50;
+            y = 2;
+            posicion(x,y);
+            printf("(o_o)");
+        }
+        p = composicion(x,y);
         if(p == 1){
             posicion(x,y);
             printf("     ");
